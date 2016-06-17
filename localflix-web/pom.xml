@@ -13,10 +13,16 @@
     <packaging>war</packaging>
 
     <properties>
+        <!--SPRING-->
         <springmvc.version>4.3.0.RELEASE</springmvc.version>
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+        <!-- WEBJARS (STATIC DEPENDENCIES DISTRIBUTED AS JAR FILES) -->
+        <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
+        <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <!-- LOG -->
         <slf4j.version>1.7.21</slf4j.version>
-        <!-- Test Dependencies -->
+        <!-- TEST DEPENDENCIES -->
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
     </properties>
@@ -39,6 +45,23 @@
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring4</artifactId>
             <version>${thymeleaf.version}</version>
+        </dependency>
+
+        <!-- WEBJARS (STATIC DEPENDENCIES DISTRIBUTED AS JAR FILES) -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${webjars-bootstrap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>${webjars-jquery-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${webjars-jquery.version}</version>
         </dependency>
 
         <!-- SERVER DEPENDENCIES -->

@@ -27,6 +27,12 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/").setViewName("home");
     }
 
+    @Override
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+    }
+
     @Bean
     public ViewResolver viewResolver(TemplateEngine templateEngine) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
