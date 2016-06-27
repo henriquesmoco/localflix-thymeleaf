@@ -15,11 +15,16 @@
     <properties>
         <!--SPRING-->
         <springmvc.version>4.3.0.RELEASE</springmvc.version>
+        <springdata.version>1.10.2.RELEASE</springdata.version>
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
         <!-- WEBJARS (STATIC DEPENDENCIES DISTRIBUTED AS JAR FILES) -->
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <!-- DATABASE, JPA -->
+        <mysql.version>6.0.2</mysql.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
+        <hibernate.version>5.1.0.Final</hibernate.version>
         <!-- LOG -->
         <slf4j.version>1.7.21</slf4j.version>
         <!-- TEST DEPENDENCIES -->
@@ -33,6 +38,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springmvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${springdata.version}</version>
         </dependency>
 
         <!-- THYMELEAF -->
@@ -62,6 +72,18 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${webjars-jquery.version}</version>
+        </dependency>
+
+        <!-- DATABASE, JPA -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!-- SERVER DEPENDENCIES -->
