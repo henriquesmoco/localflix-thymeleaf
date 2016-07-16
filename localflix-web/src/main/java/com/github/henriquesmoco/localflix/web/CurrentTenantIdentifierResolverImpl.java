@@ -15,12 +15,9 @@ public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentif
 
     @Override
     public String resolveCurrentTenantIdentifier() {
-        Optional<String> identifier = Optional.empty();
-        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-        if (requestAttributes != null) {
-            identifier = Optional.ofNullable(
-                    (String) requestAttributes.getAttribute(TENANT_ID_ATTRIBUTE, RequestAttributes.SCOPE_REQUEST));
-        }
+        Optional<RequestAttributes> requestAttributes = Optional.ofNullable(RequestContextHolder.getRequestAttributes());
+        Optional<String> identifier = requestAttributes.map(req -> (String)
+                req.getAttribute(TENANT_ID_ATTRIBUTE, RequestAttributes.SCOPE_REQUEST));
         return identifier.orElse(DEFAULT_TENANT_ID);
     }
 
