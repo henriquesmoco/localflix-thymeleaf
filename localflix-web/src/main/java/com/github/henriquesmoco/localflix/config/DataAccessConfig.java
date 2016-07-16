@@ -7,6 +7,7 @@ import org.hibernate.engine.jdbc.connections.spi.DataSourceBasedMultiTenantConne
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -18,31 +19,35 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "com.github.henriquesmoco.localflix")
 public class DataAccessConfig {
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setPackagesToScan("com.github.henriquesmoco.localflix");
+        setJpaVendorAdapter(factory);
+        setJpaProperties(factory);
+        return factory.getObject();
+    }
+
+    private void setJpaVendorAdapter(AbstractEntityManagerFactoryBean factory) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
         vendorAdapter.setDatabasePlatform(MySQL5Dialect.class.getName());
 
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.github.henriquesmoco.localflix");
-        setJpaProperties(factory.getJpaPropertyMap());
-        factory.afterPropertiesSet();
-
-        return factory.getObject();
     }
 
-    private void setJpaProperties(Map<String, Object> jpaProperties) {
+    private void setJpaProperties(AbstractEntityManagerFactoryBean factory) {
+        Map<String, Object> jpaProperties = factory.getJpaPropertyMap();
         jpaProperties.put(AvailableSettings.MULTI_TENANT, "SCHEMA");
         jpaProperties.put(AvailableSettings.MULTI_TENANT_IDENTIFIER_RESOLVER, CurrentTenantIdentifierResolverImpl.class.getName());
         jpaProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, DataSourceBasedMultiTenantConnectionProviderImpl.class.getName());
-
         //DATASOURCE FOR selectAnyDatasource
         jpaProperties.put(AvailableSettings.DATASOURCE, CurrentTenantIdentifierResolverImpl.DEFAULT_TENANT_ID);
+
+        factory.afterPropertiesSet();
     }
 
     @Bean
