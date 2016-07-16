@@ -10,7 +10,8 @@ import java.util.Optional;
 @Component
 public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentifierResolver {
 
-    public static final String DEFAULT_TENANT_ID = "java:/LocalFlixDemo";
+    public static final String DEFAULT_TENANT_ID = "java:/localflix-demo";
+    public static final String TENANT_ID_ATTRIBUTE = "CURRENT_TENANT_ID";
 
     @Override
     public String resolveCurrentTenantIdentifier() {
@@ -18,7 +19,7 @@ public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentif
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if (requestAttributes != null) {
             identifier = Optional.ofNullable(
-                    (String) requestAttributes.getAttribute("CURRENT_TENANT_ID", RequestAttributes.SCOPE_REQUEST));
+                    (String) requestAttributes.getAttribute(TENANT_ID_ATTRIBUTE, RequestAttributes.SCOPE_REQUEST));
         }
         return identifier.orElse(DEFAULT_TENANT_ID);
     }
