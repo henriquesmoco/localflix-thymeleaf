@@ -10,7 +10,7 @@ import java.util.Optional;
 @Component
 public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentifierResolver {
 
-    public static final String DEFAULT_TENANT_ID = "java:/localflix-demo";
+    public static final String DEFAULT_TENANT_ID = "localflix-demo";
     public static final String TENANT_ID_ATTRIBUTE = "CURRENT_TENANT_ID";
 
     @Override

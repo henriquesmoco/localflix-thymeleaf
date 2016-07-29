@@ -45,7 +45,7 @@ public class DataAccessConfig {
         jpaProperties.put(AvailableSettings.MULTI_TENANT_IDENTIFIER_RESOLVER, CurrentTenantIdentifierResolverImpl.class.getName());
         jpaProperties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, DataSourceBasedMultiTenantConnectionProviderImpl.class.getName());
         //DATASOURCE FOR selectAnyDatasource
-        jpaProperties.put(AvailableSettings.DATASOURCE, CurrentTenantIdentifierResolverImpl.DEFAULT_TENANT_ID);
+        jpaProperties.put(AvailableSettings.DATASOURCE, "java:/" + CurrentTenantIdentifierResolverImpl.DEFAULT_TENANT_ID);
 
         factory.afterPropertiesSet();
     }
