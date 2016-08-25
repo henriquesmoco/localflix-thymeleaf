@@ -30,6 +30,9 @@
         <!-- TEST DEPENDENCIES -->
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
+        <mockito.version>1.10.19</mockito.version>
+        <jetty-jndi.version>9.3.11.v20160721</jetty-jndi.version>
     </properties>
 
     <dependencies>
@@ -114,6 +117,29 @@
             <artifactId>spring-test</artifactId>
             <version>${springmvc.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jndi</artifactId>
+            <version>${jetty-jndi.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
