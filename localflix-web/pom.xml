@@ -31,6 +31,7 @@
         <junit.version>4.12</junit.version>
         <hamcrest.version>2.0.0.0</hamcrest.version>
         <hsqldb.version>2.3.4</hsqldb.version>
+        <liquibase.version>3.5.1</liquibase.version>
         <mockito.version>1.10.19</mockito.version>
         <jetty-jndi.version>9.3.11.v20160721</jetty-jndi.version>
     </properties>
@@ -128,6 +129,12 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>

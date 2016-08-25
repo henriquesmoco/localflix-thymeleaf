@@ -1,5 +1,6 @@
 package com.github.henriquesmoco.localflix.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.hibernate.dialect.HSQLDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -57,5 +58,24 @@ public class DataAccessTestConfig {
                 .setScriptEncoding("UTF-8")
                 .ignoreFailedDrops(true);
     }
+
+    @Bean
+    public SpringLiquibase liquibaseDemo(DataSource demoDatasource) {
+        return createSpringLiquibaseConfig(demoDatasource, "testdata-demo");
+    }
+
+    @Bean
+    public SpringLiquibase liquibaseTenant1(DataSource tenant1Datasource) {
+        return createSpringLiquibaseConfig(tenant1Datasource, "testdata-tenant1");
+    }
+
+    private SpringLiquibase createSpringLiquibaseConfig(DataSource dts, String contexts) {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("classpath:db-changelog.xml");
+        liquibase.setDataSource(dts);
+        liquibase.setContexts(contexts);
+        return liquibase;
+    }
+
 
 }

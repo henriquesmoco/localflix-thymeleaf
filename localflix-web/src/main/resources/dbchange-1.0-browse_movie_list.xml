@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="1" author="hsmoco">
+        <createTable tableName="Media">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="varchar(15)"/>
+            <column name="imbID" type="varchar(100)"/>
+            <column name="mediaType" type="varchar(10)"/>
+            <column name="posterUrl" type="varchar(500)"/>
+        </createTable>
+        <addUniqueConstraint tableName="Media" columnNames="imbID" constraintName="UIDX_Media_ImbID" />
+    </changeSet>
+
+    <changeSet id="2" author="hsmoco" context="testdata-demo">
+        <insert tableName="Media">
+            <column name="title" value="Son of Batman" />
+            <column name="year" value="2014" />
+            <column name="imbID" value="tt3139072" />
+            <column name="mediaType" value="MOVIE" />
+            <column name="posterUrl" value="http://ia.media-imdb.com/images/M/MV5BMTc4MDY3NDU3MF5BMl5BanBnXkFtZTgwODQ2MjU2MTE@._V1_SX300.jpg" />
+        </insert>
+        <insert tableName="Media">
+            <column name="title" value="Batman: Bad Blood" />
+            <column name="year" value="2016" />
+            <column name="imbID" value="tt4870838" />
+            <column name="mediaType" value="MOVIE" />
+            <column name="posterUrl" value="http://ia.media-imdb.com/images/M/MV5BMTcyNTg0OTIzN15BMl5BanBnXkFtZTgwMzQ3MDEzNzE@._V1_SX300.jpg" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
