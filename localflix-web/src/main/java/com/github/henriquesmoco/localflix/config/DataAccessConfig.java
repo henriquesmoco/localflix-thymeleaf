@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -23,20 +24,12 @@ import java.util.Map;
 public class DataAccessConfig {
 
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
+    public EntityManagerFactory entityManagerFactory(JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setPackagesToScan("com.github.henriquesmoco.localflix");
-        setJpaVendorAdapter(factory);
+        factory.setJpaVendorAdapter(jpaVendorAdapter);
         setJpaProperties(factory);
         return factory.getObject();
-    }
-
-    private void setJpaVendorAdapter(AbstractEntityManagerFactoryBean factory) {
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setDatabasePlatform(MySQL5Dialect.class.getName());
-
-        factory.setJpaVendorAdapter(vendorAdapter);
     }
 
     private void setJpaProperties(AbstractEntityManagerFactoryBean factory) {
@@ -51,9 +44,16 @@ public class DataAccessConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager() {
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setDatabasePlatform(MySQL5Dialect.class.getName());
+        return vendorAdapter;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager txManager = new JpaTransactionManager();
-        txManager.setEntityManagerFactory(entityManagerFactory());
+        txManager.setEntityManagerFactory(entityManagerFactory);
         return txManager;
     }
 
