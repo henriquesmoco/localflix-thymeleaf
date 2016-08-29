@@ -22,7 +22,7 @@
         <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
         <!-- DATABASE, JPA -->
-        <mysql.version>6.0.2</mysql.version>
+        <mysql.version>6.0.3</mysql.version>
         <hsqldb.version>2.3.4</hsqldb.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
         <!-- LOG -->
@@ -35,6 +35,29 @@
         <mockito.version>1.10.19</mockito.version>
         <jetty-jndi.version>9.3.11.v20160721</jetty-jndi.version>
     </properties>
+
+    <profiles>
+        <!--The parameter nullNamePatternMatchesAll in liquibase.url is related to bug https://liquibase.jira.com/browse/CORE-2723-->
+        <profile>
+            <id>production</id>
+            <properties>
+                <liquibase.server>localflix-mysql</liquibase.server>
+                <liquibase.url>jdbc:mysql://192.168.2.128:3306/localflix?useSSL=false&amp;nullNamePatternMatchesAll=true</liquibase.url>
+                <liquibase.contexts>production</liquibase.contexts>
+            </properties>
+        </profile>
+        <profile>
+            <id>demo</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <liquibase.server>localflix-mysql</liquibase.server>
+                <liquibase.url>jdbc:mysql://192.168.2.128:3306/localflixdemo?useSSL=false&amp;nullNamePatternMatchesAll=true</liquibase.url>
+                <liquibase.contexts>testdata-demo</liquibase.contexts>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <!--SPRING-->
@@ -183,6 +206,16 @@
                 <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <!--This plugin version doesn't use SPI so let's help it find the right driver-->
+                    <driver>com.mysql.cj.jdbc.Driver</driver>
+                    <changeLogFile>db-changelog.xml</changeLogFile>
                 </configuration>
             </plugin>
         </plugins>
