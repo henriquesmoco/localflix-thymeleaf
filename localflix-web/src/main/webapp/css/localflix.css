@@ -1,6 +1,6 @@
-/* Remove the navbar's default rounded borders and increase the bottom margin */
+/* Remove the navbar's default rounded borders and the bottom margin */
 .navbar {
-    margin-bottom: 50px;
+    margin-bottom: 0;
     border-radius: 0;
 }
 
@@ -13,4 +13,20 @@
 footer {
     background-color: #f2f2f2;
     padding: 25px;
+}
+
+._fixedTop {
+    position: fixed !important;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+}
+
+/* padding-top should be the same value as main.margin-top */
+._fixedTop + .container-fluid {
+    padding-top: 50px;
+}
+
+main {
+    margin-top: 50px;
 }
