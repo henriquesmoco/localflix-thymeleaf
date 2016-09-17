@@ -9,24 +9,22 @@
     margin-bottom: 0;
 }
 
-/* Add a gray background color and some padding to the footer */
-footer {
-    background-color: #f2f2f2;
-    padding: 25px;
-}
-
-._fixedTop {
-    position: fixed !important;
-    overflow: hidden;
+.affix {
     top: 0;
     width: 100%;
 }
 
-/* padding-top should be the same value as main.margin-top */
-._fixedTop + .container-fluid {
-    padding-top: 50px;
+/* This margin-top should be the same value as main.padding-top */
+.affix + .container-fluid {
+    margin-top: 50px;
 }
 
 main {
-    margin-top: 50px;
+    padding-top: 50px;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
 }

@@ -11,23 +11,8 @@
             th:src="@{/webjars/jquery/2.2.4/jquery.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
             th:src="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.js}"></script>
-    <script>
-        $(document).ready(function () {
-            //later move this to a localflix javascript module
-            window.localFlixJsCache = {
-                navbarElement : $(".navbar"),
-                pageHeaderHeight : $('header.main-header').outerHeight()
-            };
-        }, window.onscroll = navbarChange);
-
-        function navbarChange() {
-            if( $(this).scrollTop() >= localFlixJsCache.pageHeaderHeight ) {
-                localFlixJsCache.navbarElement.addClass("_fixedTop");
-            } else {
-                localFlixJsCache.navbarElement.removeClass("_fixedTop");
-            }
-        }
-    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 </footer>
 </body>
 </html>

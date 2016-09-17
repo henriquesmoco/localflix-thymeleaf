@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head></head>
-<body th:fragment="header">
-    <header class="main-header jumbotron">
+<body>
+    <header th:fragment="header" class="jumbotron">
         <div class="container text-center">
             <h1>LocalFlix</h1>
             <p>Your personal local video store</p>
         </div>
     </header>
 
-    <nav class="navbar navbar-inverse">
+    <nav th:fragment="nav" class="navbar navbar-inverse" data-spy="affix" data-offset-top="237">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
