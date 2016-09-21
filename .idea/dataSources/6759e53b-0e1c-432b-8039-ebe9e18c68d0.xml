@@ -1,0 +1,12 @@
+<dataSource name="HSQLDB (Local) - 3f2a43ce-3e0a-4cd7-a407-8ac26a156f3c">
+  <database-model serializer="dbm" rdbms="HSQLDB" format-version="2.6">
+    <database id="1" name="PUBLIC">
+      <visible>1</visible>
+    </database>
+    <schema id="2" parent="1" name="PUBLIC">
+      <visible>1</visible>
+    </schema>
+    <schema id="3" parent="1" name="INFORMATION_SCHEMA" />
+    <schema id="4" parent="1" name="SYSTEM_LOBS" />
+  </database-model>
+</dataSource>
