@@ -60,6 +60,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         resolver.setApplicationContext(applicationContext);
         resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".html");
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setTemplateMode(TemplateMode.HTML);
         return resolver;
     }
