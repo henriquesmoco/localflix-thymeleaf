@@ -20,12 +20,15 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @ComponentScan(basePackages="com.github.henriquesmoco.localflix")
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
+    private final ApplicationContext applicationContext;
+
     @Autowired
-    private ApplicationContext applicationContext;
+    public MvcConfig(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
     }
 
     @Override
