@@ -4,6 +4,10 @@
     border-radius: 0;
 }
 
+.navbar-main.affix {
+    z-index: 9999;
+}
+
 /* Remove the jumbotron's default bottom margin */
 .jumbotron {
     margin-bottom: 0;
