@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="3" author="hsmoco">
+        <createTable tableName="Staff">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(30)" />
+            <column name="email" type="varchar(30)" />
+            <column name="sex" type="char"/>
+            <column name="birth_date" type="date"/>
+            <column name="enabled" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="Staff" columnNames="email" constraintName="UIDX_Staff_Email" />
+
+        <rollback>
+            <dropTable tableName="Staff" cascadeConstraints="true" />
+        </rollback>
+    </changeSet>
+
+    <changeSet id="3.1" author="hsmoco" context="testdata-demo">
+        <insert tableName="Staff">
+            <column name="first_name" value="John" />
+            <column name="surname" value="Doe" />
+            <column name="email" value="john.doe@localflix.com" />
+            <column name="sex" value="M" />
+            <column name="birth_date" valueDate="1900-01-01" />
+            <column name="enabled" valueBoolean="true" />
+        </insert>
+        <insert tableName="Staff">
+            <column name="first_name" value="Anakin" />
+            <column name="sex" value="M" />
+        </insert>
+        <insert tableName="Staff">
+            <column name="first_name" value="Luke" />
+            <column name="sex" value="M" />
+        </insert>
+        <insert tableName="Staff">
+            <column name="first_name" value="Leia" />
+            <column name="sex" value="F" />
+        </insert>
+        <insert tableName="Staff">
+            <column name="first_name" value="Han" />
+            <column name="sex" value="M" />
+        </insert>
+        <insert tableName="Staff">
+            <column name="first_name" value="Chewbacca" />
+        </insert>
+
+        <rollback>
+            <delete tableName="Staff" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

@@ -7,6 +7,7 @@ import org.hibernate.engine.jdbc.connections.spi.DataSourceBasedMultiTenantConne
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.orm.jpa.AbstractEntityManagerFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -19,6 +20,7 @@ import javax.persistence.EntityManagerFactory;
 import java.util.Map;
 
 @Configuration
+@EnableSpringDataWebSupport
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.github.henriquesmoco.localflix")
 public class DataAccessConfig {

@@ -9,5 +9,6 @@
 
 
     <include file="dbchange-1.0-browse_movie_list.xml" />
+    <include file="dbchange-#3-browse_staff_members_list.xml" />
 
 </databaseChangeLog>

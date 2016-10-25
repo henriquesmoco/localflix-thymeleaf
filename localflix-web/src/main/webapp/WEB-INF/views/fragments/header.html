@@ -31,6 +31,11 @@
                         <i class="fa fa-home"> Browse</i>
                     </a>
                 </li>
+                <li th:classappend="${sitesection == 'staff' ? 'active' : '' }">
+                    <a href="../staff/list.html" th:href="@{/{tenantid}/staff(tenantid=${CURRENT_TENANT_ID})}">
+                        <i class="fa fa-user"> Staff</i>
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-user"></i> Your Account</a></li>

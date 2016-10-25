@@ -25,9 +25,10 @@
         <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
+        <webjars-jquery-datatable>1.10.12</webjars-jquery-datatable>
         <!-- DATABASE, JPA -->
         <mysql.version>6.0.3</mysql.version>
-        <hibernate.version>5.2.2.Final</hibernate.version>
+        <hibernate.version>5.2.3.Final</hibernate.version>
         <!-- LOG -->
         <slf4j.version>1.7.21</slf4j.version>
         <!-- OTHERS -->
@@ -125,6 +126,11 @@
             <artifactId>jquery</artifactId>
             <version>${webjars-jquery.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>datatables</artifactId>
+            <version>${webjars-jquery-datatable}</version>
+        </dependency>
 
         <!-- DATABASE, JPA -->
         <dependency>
@@ -134,7 +140,7 @@
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
+            <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
