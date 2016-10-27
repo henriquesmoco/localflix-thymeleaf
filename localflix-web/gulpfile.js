@@ -26,7 +26,9 @@ gulp.task('compile-typescript', function() {
         }))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest("src/main/webapp/js/"));
+        .pipe(gulp.dest(function(file) {
+            return file.base;
+        }));
 });
 
 gulp.task('watch', function() {
