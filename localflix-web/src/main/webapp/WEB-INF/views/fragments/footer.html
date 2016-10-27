@@ -14,5 +14,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
 </footer>
+
+<script th:fragment="load-script(name)"
+        th:data-main="${name}"
+        th:src="@{/webjars/requirejs/2.3.2/require.min.js}"></script>
+
 </body>
 </html>
