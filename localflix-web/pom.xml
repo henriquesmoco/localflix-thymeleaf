@@ -27,6 +27,7 @@
         <webjars-jquery.version>2.2.4</webjars-jquery.version>
         <webjars-jquery-datatable>1.10.12</webjars-jquery-datatable>
         <webjars-requirejs>2.3.2</webjars-requirejs>
+        <webjars-fontawesome>4.6.3</webjars-fontawesome>
         <!-- DATABASE, JPA -->
         <mysql.version>6.0.3</mysql.version>
         <hibernate.version>5.2.3.Final</hibernate.version>
@@ -136,6 +137,11 @@
             <groupId>org.webjars</groupId>
             <artifactId>requirejs</artifactId>
             <version>${webjars-requirejs}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>fontawesome</artifactId>
+            <version>${webjars-fontawesome}</version>
         </dependency>
 
         <!-- DATABASE, JPA -->
