@@ -38,21 +38,6 @@
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"
         th:src="@{/webjars/datatables/1.10.12/js/jquery.dataTables.min.js}"></script>
 
-<script src="/js/commonComponents.js" th:src="@{/js/commonComponents.js}"></script>
-<script>
-    $(function() {
-        commonComponents.datatable("#staff-list", {
-            "columns": [
-                { "data": "id" },
-                { "data": "firstName" },
-                { "data": "surname" },
-                { "data": "email" },
-                { "data": "sex" },
-                { "data": "birthDate", "render": commonComponents.renders.localDate, "dateFormat": "yyyy-MM-dd" },
-                { "data": "enabled", "render": commonComponents.renders.yesNo }
-            ]
-        });
-    });
-</script>
+<div th:replace="fragments/footer :: load-script(name='__@{/js/views/catalog-list}__')"></div>
 </body>
 </html>
