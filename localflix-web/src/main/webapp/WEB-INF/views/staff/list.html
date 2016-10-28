@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: headTag">
+<head th:replace="fragments/head :: headTag(~{::link})">
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
+          th:href="@{/webjars/datatables/1.10.12/css/jquery.dataTables.min.css}" rel="stylesheet" />
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
@@ -30,14 +32,11 @@
     </div>
 </main>
 
-<footer th:replace="fragments/footer :: footer"></footer>
+<footer th:replace="fragments/footer :: footer(~{::script})">
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"
+            th:src="@{/webjars/datatables/1.10.12/js/jquery.dataTables.min.js}"></script>
 
-<link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"
-      th:href="@{/webjars/datatables/1.10.12/css/jquery.dataTables.min.css}" rel="stylesheet" />
-
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"
-        th:src="@{/webjars/datatables/1.10.12/js/jquery.dataTables.min.js}"></script>
-
-<div th:replace="fragments/footer :: load-script(name='__@{/js/views/catalog-list}__')"></div>
+    <script th:replace="fragments/footer :: load-script(name='__@{/js/views/catalog-list}__')"></script>
+</footer>
 </body>
 </html>
