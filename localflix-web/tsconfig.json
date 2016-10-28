@@ -2,10 +2,12 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "sourceMap": true,
-    "target": "es2015",
+    "target": "es5",
     "module": "amd"
   },
-  "include": [
-    "src/main/webapp/js/**/*.ts"
+  "exclude": [
+    "node",
+    "node_modules",
+    "typings"
   ]
 }

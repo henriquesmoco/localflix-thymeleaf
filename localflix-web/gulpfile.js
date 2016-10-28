@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 var ts = require("gulp-typescript");
 var sourcemaps = require('gulp-sourcemaps');
-var babel = require("gulp-babel");
 var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
 
 var tsProject = ts.createProject("tsconfig.json");
 
@@ -21,10 +21,7 @@ gulp.task('compile-typescript', function() {
         .pipe(sourcemaps.init())
         .pipe(tsProject())
         .js
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(uglify())
+        .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(function(file) {
             return file.base;
