@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: headTag">
+<head th:replace="fragments/head :: headTag(~{})">
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
@@ -10,6 +10,6 @@
     Welcome to LocalFlix
 </main>
 
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/footer :: footer(~{})"></div>
 </body>
 </html>
