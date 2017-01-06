@@ -1,8 +1,5 @@
-/// <reference path="./../../../../../typings/jquery.d.ts"/>
-/// <reference path="./../../../../../typings/jquery.dataTables.d.ts"/>
-/// <reference path="./../../../../../typings/datatable.d.ts"/>
 
-import { DateUtil } from "./../utils";
+import { DateUtil } from "../utils";
 
 
 export class Datatable {
@@ -33,7 +30,8 @@ export class Datatable {
         this.addDatatableRowCallback(datatableOptions);
 
         this.correctDatatableDefaultsForBootstrap();
-        this.jqDatatable = $(selector, context).dataTable(datatableOptions);
+        this.jqDatatable = $(selector, context);
+        this.jqDatatable.DataTable(datatableOptions);
         this.setDatatableOnClick(this.jqDatatable);
     }
 
@@ -90,8 +88,9 @@ export class DatatableRenders {
     static yesNo(data: any, type: string, full: any, meta: DataTables.CellMetaSettings) {
         return data == true ? "Yes" : "No";
     }
-    static localDate(data: any, type: string, full: any, meta: DataTables.CellMetaSettings) {
-        var dateFormat = (<any>meta.settings).aoColumns[meta.col].dateFormat;
-        return DateUtil.formatLocalDate(data, dateFormat);
+    static localDate(dateFormat: string) {
+        return function(data: any, type: string, full: any, meta: DataTables.CellMetaSettings) {
+            return DateUtil.formatLocalDate(data, dateFormat);
+        }
     }
 }

@@ -8,7 +8,10 @@
     "typescript": "2.0.6",
     "gulp-util": "3.0.7",
     "gulp-babel": "6.1.2",
-    "glob": "7.1.1"
+    "glob": "7.1.1",
+
+    "@types/jquery": "2.0.34",
+    "@types/jquery.datatables": "1.10.33"
   },
   "scripts": {
     "prebuild": "npm install",
