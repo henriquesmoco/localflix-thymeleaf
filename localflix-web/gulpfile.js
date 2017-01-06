@@ -3,6 +3,8 @@ var ts = require("gulp-typescript");
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
+const babel = require('gulp-babel');
+var glob = require('glob');
 
 var tsProject = ts.createProject("tsconfig.json");
 
@@ -16,11 +18,16 @@ gulp.task('default', ['compile-typescript'], function() {
 });
 
 gulp.task('compile-typescript', function() {
-    return tsProject
-        .src()
+    var tsFiles = glob.sync('./src/main/webapp/js/**/*.ts');
+    var tsResult = gulp.src(tsFiles) // or tsProject.src()
         .pipe(sourcemaps.init())
-        .pipe(tsProject())
-        .js
+        .pipe(tsProject());
+
+
+    return tsResult.js
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(function(file) {
