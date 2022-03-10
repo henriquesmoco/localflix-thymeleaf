@@ -1,7 +1,7 @@
 # localflix-thymeleaf
 This is an multi tenant app for renting movies.
 
-#####Technologies:
+##### Technologies:
 
 * Spring MVC - 4.3.3.RELEASE
 * Spring Data JPA - 1.10.4.RELEASE
@@ -11,7 +11,7 @@ This is an multi tenant app for renting movies.
 * Webjars
 * Others
 
-##Tenant in URL Path
+## Tenant in URL Path
 Each tenant is identified by the url path, like this:
 
 > http://localhost:8080/localflix-web/**tenant1**/catalog/list
@@ -19,7 +19,7 @@ Each tenant is identified by the url path, like this:
 This tenantId **tenant1** maps to a configured datasource in the
 server with the same JNDI name **java:/tenant1**
 
-##Updating the database
+## Updating the database
 mvn liquibase:update
 
 mvn liquibase:update -Pproduction -Dliquibase.verbose=false
